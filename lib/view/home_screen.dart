@@ -20,6 +20,12 @@ class HomeScreen extends StatelessWidget {
                 GoRouter.of(context).go("/login");
               },
               child: const Text("Login"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                GoRouter.of(context).go("/webview");
+              },
+              child: const Text("Webview"),
             )
           ],
         ),

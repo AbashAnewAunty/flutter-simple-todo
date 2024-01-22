@@ -9,6 +9,7 @@ import 'package:simple_todo/view/profile_input_page.dart';
 import 'package:simple_todo/view/signup_complete_page.dart';
 import 'package:simple_todo/view/signup_page.dart';
 import 'package:simple_todo/view/turms_page.dart';
+import 'package:simple_todo/view/webview_page.dart';
 
 final GoRouter myRouter = GoRouter(
   initialLocation: "/",
@@ -21,6 +22,14 @@ final GoRouter myRouter = GoRouter(
         );
       },
       routes: <RouteBase>[
+        GoRoute(
+          path: "webview",
+          pageBuilder: (context, state) {
+            return const MaterialPage(
+              child: MyWebviewPage(),
+            );
+          },
+        ),
         GoRoute(
           path: "login",
           pageBuilder: (context, state) {
