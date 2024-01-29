@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "513873060270",
+    "project_id": "simple-todo-c5677",
+    "storage_bucket": "simple-todo-c5677.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513873060270:android:58c080b4d960b5ae9ce83f",
+        "android_client_info": {
+          "package_name": "xyz.zebracrypto.simpletodo.simple_todo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQAifgB0gGHcEPMABw1f-6UvpoXdsOdLQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
