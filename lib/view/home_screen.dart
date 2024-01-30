@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_todo/view_model/auth_view_model.dart';
+import 'package:simple_todo/provider/auth_repository_provider.dart';
+import 'package:simple_todo/provider/auth_user_id_provider.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(authViewModelProvider);
-    final authController = ref.watch(authViewModelProvider.notifier);
+    final userId = ref.watch(userIdProvider);
+    final authProvider = ref.read(authRepositoryProvider);
     return Scaffold(
       appBar: AppBar(),
       body: Center(
@@ -37,13 +38,11 @@ class HomeScreen extends ConsumerWidget {
               },
               child: const Text("Webview"),
             ),
-            if (user != null) Text("uid: ${user.uid}"),
-            if (user != null) Text("phoneNumber: ${user.phoneNumber}"),
-            if (user != null) Text("providerId: ${user.providerData.first.providerId}"),
-            if (user != null)
+            if (userId != null && userId.isNotEmpty) Text("uid: $userId"),
+            if (userId != null && userId.isNotEmpty)
               ElevatedButton(
                 onPressed: () async {
-                  await authController.signOut();
+                  await authProvider.signOut();
                 },
                 child: const Text("sign out"),
               ),

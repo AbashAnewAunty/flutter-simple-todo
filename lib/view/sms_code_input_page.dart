@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
-import 'package:simple_todo/view_model/auth_view_model.dart';
+import 'package:simple_todo/provider/auth_repository_provider.dart';
+import 'package:simple_todo/provider/auth_user_id_provider.dart';
 
 class SmsCodeIputPage extends ConsumerWidget {
   const SmsCodeIputPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(authViewModelProvider);
+    final userId = ref.watch(userIdProvider);
     return Material(
       child: SafeArea(
         child: Scaffold(
@@ -17,13 +18,11 @@ class SmsCodeIputPage extends ConsumerWidget {
             Pinput(
               length: 6,
               onCompleted: (String smsCode) async {
-                final authViewModel = ref.watch(authViewModelProvider.notifier);
-                await authViewModel.signInWithSmsCode(smsCode);
+                final authRepository = ref.read(authRepositoryProvider);
+                await authRepository.signInWithSmsCode(smsCode);
               },
             ),
-            if (user != null) Text("uid: ${user.uid}"),
-            if (user != null) Text("phoneNumber: ${user.phoneNumber}"),
-            if (user != null) Text("providerId: ${user.providerData.first.providerId}"),
+            if (userId != null && userId.isNotEmpty) Text("uid: $userId"),
             ElevatedButton(
               onPressed: () {
                 context.go("/");

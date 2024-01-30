@@ -2,14 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_todo/view_model/auth_view_model.dart';
+import 'package:simple_todo/provider/auth_repository_provider.dart';
+import 'package:simple_todo/provider/auth_user_id_provider.dart';
 
 class PhoneNumberInputPage extends ConsumerWidget {
   const PhoneNumberInputPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(authViewModelProvider);
+    final userId = ref.watch(userIdProvider);
     final _textEditingController = TextEditingController();
     final _focusNode = FocusNode();
     String _errorMessage = "";
@@ -48,10 +49,8 @@ class PhoneNumberInputPage extends ConsumerWidget {
                             });
                       },
                       codeSent: (String verificationId, int? resendToken) {
-                        final authViewModel = ref.watch(authViewModelProvider.notifier);
-                        authViewModel.verificationId = verificationId;
-                        print(verificationId);
-                        print(resendToken);
+                        final authRepository = ref.read(authRepositoryProvider);
+                        authRepository.saveVeficationId(verificationId);
                         context.go("/sms");
                       },
                       codeAutoRetrievalTimeout: (String verificationId) {},
@@ -59,9 +58,7 @@ class PhoneNumberInputPage extends ConsumerWidget {
                   },
                   child: Text("登録"),
                 ),
-                if (user != null) Text("uid: ${user.uid}"),
-                if (user != null) Text("phoneNumber: ${user.phoneNumber}"),
-                if (user != null) Text("providerId: ${user.providerData.first.providerId}"),
+                if (userId != null && userId.isNotEmpty) Text("uid: $userId"),
               ]),
             ),
           ),
