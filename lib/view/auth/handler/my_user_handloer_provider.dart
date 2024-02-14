@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:simple_todo/provider/auth_repository.dart';
-import 'package:simple_todo/provider/auth_repository_provider.dart';
+import 'package:simple_todo/domain/repository/auth_repository.dart';
+import 'package:simple_todo/repository/auth/auth_repository_provider.dart';
 
 final myUserHandlerProvider = Provider<MyUserHandler>((ref) {
   final authRepository = ref.read(authRepositoryProvider);

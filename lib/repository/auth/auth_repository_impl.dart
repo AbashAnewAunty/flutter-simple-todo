@@ -1,6 +1,6 @@
 import 'package:simple_todo/infrastracture/firebase/firebase_auth_manager.dart';
-import 'package:simple_todo/provider/auth_repository.dart';
-import 'package:simple_todo/view_model/my_user_notifer_provider.dart';
+import 'package:simple_todo/domain/my_user_notifer_provider.dart';
+import 'package:simple_todo/domain/repository/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   late final FirebaseAuthManager _firebaseAuthManager;

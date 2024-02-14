@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_todo/provider/auth_repository_provider.dart';
-import 'package:simple_todo/view_model/my_user_handloer_provider.dart';
-import 'package:simple_todo/view_model/my_user_notifer_provider.dart';
+
+import 'package:simple_todo/view/auth/handler/my_user_handloer_provider.dart';
+import 'package:simple_todo/domain/my_user_notifer_provider.dart';
 
 class PhoneNumberInputPage extends ConsumerWidget {
   PhoneNumberInputPage({super.key});

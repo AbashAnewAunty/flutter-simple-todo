@@ -1,4 +1,4 @@
-import 'package:simple_todo/data_model/my_user.dart';
+import 'package:simple_todo/domain/entity/my_user.dart';
 
 abstract class FirebaseAuthManager {
   void saveVerificationId(String verificationId);

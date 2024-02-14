@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:simple_todo/data_model/my_user.dart';
+import 'package:simple_todo/domain/entity/my_user.dart';
 import 'package:simple_todo/infrastracture/firebase/firebase_auth_manager.dart';
 
 class FirebaseAuthManagerImpl implements FirebaseAuthManager {
