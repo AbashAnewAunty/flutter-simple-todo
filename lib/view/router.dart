@@ -35,7 +35,7 @@ final GoRouter myRouter = GoRouter(
         GoRoute(
           path: "phone",
           pageBuilder: (context, state) {
-            return const MaterialPage(
+            return MaterialPage(
               child: PhoneNumberInputPage(),
             );
           },

@@ -3,16 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:simple_todo/provider/auth_repository_provider.dart';
-import 'package:simple_todo/provider/auth_user_id_provider.dart';
+import 'package:simple_todo/view_model/my_user_handloer_provider.dart';
+import 'package:simple_todo/view_model/my_user_notifer_provider.dart';
 
 class PhoneNumberInputPage extends ConsumerWidget {
-  const PhoneNumberInputPage({super.key});
+  PhoneNumberInputPage({super.key});
+
+  final _textEditingController = TextEditingController();
+  final _focusNode = FocusNode();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userId = ref.watch(userIdProvider);
-    final _textEditingController = TextEditingController();
-    final _focusNode = FocusNode();
+    final myUser = ref.watch(myUserNotiferProvider);
+
     String _errorMessage = "";
     return Material(
       child: SafeArea(
@@ -49,8 +52,8 @@ class PhoneNumberInputPage extends ConsumerWidget {
                             });
                       },
                       codeSent: (String verificationId, int? resendToken) {
-                        final authRepository = ref.read(authRepositoryProvider);
-                        authRepository.saveVeficationId(verificationId);
+                        final myUserHandler = ref.read(myUserHandlerProvider);
+                        myUserHandler.saveVeficationId(verificationId);
                         context.go("/sms");
                       },
                       codeAutoRetrievalTimeout: (String verificationId) {},
@@ -58,7 +61,7 @@ class PhoneNumberInputPage extends ConsumerWidget {
                   },
                   child: Text("登録"),
                 ),
-                if (userId != null && userId.isNotEmpty) Text("uid: $userId"),
+                if (myUser.uId.isNotEmpty) Text("uid: ${myUser.uId}"),
               ]),
             ),
           ),

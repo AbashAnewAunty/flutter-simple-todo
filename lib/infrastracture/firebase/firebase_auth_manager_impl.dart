@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:simple_todo/data_model/my_user.dart';
 import 'package:simple_todo/infrastracture/firebase/firebase_auth_manager.dart';
 
 class FirebaseAuthManagerImpl implements FirebaseAuthManager {
@@ -13,9 +14,13 @@ class FirebaseAuthManagerImpl implements FirebaseAuthManager {
   }
 
   @override
-  Future<void> signInWithSmsCode(String smsCode) async {
+  Future<MyUser> signInWithSmsCode(String smsCode) async {
     final credential = PhoneAuthProvider.credential(verificationId: _verificationId, smsCode: smsCode);
-    await _auth.signInWithCredential(credential);
+    final firebaseUser = await _auth.signInWithCredential(credential);
+    if (firebaseUser.user == null) {
+      throw Error();
+    }
+    return MyUser(uId: firebaseUser.user!.uid);
   }
 
   @override
