@@ -3,16 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
 import 'package:simple_todo/view/auth/handler/my_user_handloer_provider.dart';
-import 'package:simple_todo/domain/my_user_notifer_provider.dart';
 import 'package:simple_todo/view/auth/sms_code_input_model_provider.dart';
-import 'package:simple_todo/view/auth/sms_code_input_view_model.dart';
 
 class SmsCodeIputPage extends ConsumerWidget {
   const SmsCodeIputPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final myUser = ref.watch(myUserNotiferProvider);
     final viewModel = ref.watch(smsCodeInputModelProvider);
     return Material(
       child: SafeArea(
