@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:simple_todo/view/auth/my_user_notifer_provider.dart';
+import 'package:simple_todo/domain/my_user_notifer_provider.dart';
 import 'package:simple_todo/view/auth/sms_code_input_view_model.dart';
 
 final smsCodeInputModelProvider = Provider((ref) {
