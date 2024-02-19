@@ -31,6 +31,12 @@ target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
+  # firestoreビルド時間短縮
+  # https://firebase.google.com/docs/firestore/quickstart?hl=ja&_gl=1*1jwrv2d*_up*MQ..*_ga*MTMwNzI4MTY3MS4xNzA4MzUyMzY4*_ga_CW55HF8NVT*MTcwODM1MjM2Ny4xLjAuMTcwODM1MjM2Ny4wLjAuMA..
+  pod 'FirebaseFirestore',
+    :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git',
+    :tag => 'IOS_SDK_VERSION'
+
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   target 'RunnerTests' do
     inherit! :search_paths
