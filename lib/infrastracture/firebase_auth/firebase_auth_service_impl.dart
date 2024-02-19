@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:simple_todo/domain/entity/my_user.dart';
-import 'package:simple_todo/infrastracture/firebase/firebase_auth_manager.dart';
+import 'package:simple_todo/infrastracture/firebase_auth/firebase_auth_service.dart';
 
-class FirebaseAuthManagerImpl implements FirebaseAuthManager {
+class FirebaseAuthServiceImpl implements FirebaseAuthService {
   final _auth = FirebaseAuth.instance;
   String _verificationId = "";
 
-  FirebaseAuthManagerImpl();
+  FirebaseAuthServiceImpl();
 
   @override
   void saveVerificationId(String verificationId) {

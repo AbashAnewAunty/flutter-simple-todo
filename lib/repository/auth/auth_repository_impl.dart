@@ -1,13 +1,13 @@
-import 'package:simple_todo/infrastracture/firebase/firebase_auth_manager.dart';
+import 'package:simple_todo/infrastracture/firebase_auth/firebase_auth_service.dart';
 import 'package:simple_todo/domain/entity_notifier/my_user_notifer_provider.dart';
 import 'package:simple_todo/domain/repository/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
-  late final FirebaseAuthManager _firebaseAuthManager;
+  late final FirebaseAuthService _firebaseAuthManager;
   late final MyUserNotifier _myUserNotifier;
 
   AuthRepositoryImpl(
-    FirebaseAuthManager firebaseAuthManager,
+    FirebaseAuthService firebaseAuthManager,
     MyUserNotifier myUserNotifier,
   ) {
     _firebaseAuthManager = firebaseAuthManager;
