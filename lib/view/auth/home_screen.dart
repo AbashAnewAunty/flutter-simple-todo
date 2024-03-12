@@ -38,6 +38,12 @@ class HomeScreen extends ConsumerWidget {
               },
               child: const Text("Webview"),
             ),
+            ElevatedButton(
+              onPressed: () {
+                myUserHandler.getCurrentUser();
+              },
+              child: const Text("get current user"),
+            ),
             if (myUser.uId.isNotEmpty) Text("uid: ${myUser.uId}"),
             if (myUser.uId.isNotEmpty)
               ElevatedButton(

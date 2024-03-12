@@ -9,6 +9,23 @@ class FirebaseAuthManagerImpl implements FirebaseAuthManager {
   FirebaseAuthManagerImpl();
 
   @override
+  Future<MyUser?> getCurrentUser() async {
+    final user = _auth.currentUser;
+    if (user == null) {
+      return null;
+    }
+
+    final idToken = await user.getIdToken();
+
+    final myUser = MyUser(
+      uId: user.uid,
+      idToken: idToken!,
+      phoneNumber: user.phoneNumber!,
+    );
+    return myUser;
+  }
+
+  @override
   void saveVerificationId(String verificationId) {
     _verificationId = verificationId;
   }
@@ -20,7 +37,9 @@ class FirebaseAuthManagerImpl implements FirebaseAuthManager {
     if (firebaseUser.user == null) {
       throw Error();
     }
-    return MyUser(uId: firebaseUser.user!.uid);
+    final idToken = await firebaseUser.user!.getIdToken();
+    print("idToken: $idToken");
+    return MyUser(uId: firebaseUser.user!.uid, idToken: idToken!);
   }
 
   @override

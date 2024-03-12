@@ -29,7 +29,10 @@ class SmsCodeInputViewModel extends Notifier<SmsCodeInputState> {
   @override
   SmsCodeInputState build() {
     return SmsCodeInputState(
-      myUser: const MyUser(uId: ""),
+      myUser: const MyUser(
+        uId: "",
+        idToken: "",
+      ),
     );
   }
 

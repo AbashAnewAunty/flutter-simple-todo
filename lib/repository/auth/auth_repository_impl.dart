@@ -1,3 +1,4 @@
+import 'package:simple_todo/domain/entity/my_user.dart';
 import 'package:simple_todo/infrastracture/firebase/firebase_auth_manager.dart';
 import 'package:simple_todo/domain/my_user_notifer_provider.dart';
 import 'package:simple_todo/domain/repository/auth_repository.dart';
@@ -12,6 +13,12 @@ class AuthRepositoryImpl implements AuthRepository {
   ) {
     _firebaseAuthManager = firebaseAuthManager;
     _myUserNotifier = myUserNotifier;
+  }
+
+  @override
+  Future<MyUser?> getCurrentUser() async {
+    final myUser = await _firebaseAuthManager.getCurrentUser();
+    return myUser;
   }
 
   @override

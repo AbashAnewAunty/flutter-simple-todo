@@ -6,7 +6,10 @@ final myUserNotiferProvider = NotifierProvider<MyUserNotifier, MyUser>(() => MyU
 class MyUserNotifier extends Notifier<MyUser> {
   @override
   MyUser build() {
-    return const MyUser(uId: "");
+    return const MyUser(
+      uId: "",
+      idToken: "",
+    );
   }
 
   setMyUser(MyUser myUser) {

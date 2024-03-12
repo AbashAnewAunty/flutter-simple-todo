@@ -23,6 +23,7 @@ class SmsCodeIputPage extends ConsumerWidget {
               },
             ),
             if (viewModel.myUser.uId.isNotEmpty) Text("uid: ${viewModel.myUser.uId}"),
+            if (viewModel.myUser.idToken.isNotEmpty) Text("idToken: ${viewModel.myUser.idToken}"),
             if (viewModel.isLoading)
               const SizedBox(
                 height: 50,

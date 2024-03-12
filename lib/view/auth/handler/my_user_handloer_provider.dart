@@ -24,13 +24,18 @@ class MyUserHandler {
     _smsCodeInputViewModel = smsCodeInputViewModel;
   }
 
+  Future<void> getCurrentUser() async {
+    final myUser = await _authRepository.getCurrentUser();
+    print("hello");
+  }
+
   void saveVeficationId(String verificationId) {
     _authRepository.saveVeficationId(verificationId);
   }
 
   Future<void> signInWithSmsCode(String smsCode) async {
     _smsCodeInputViewModel.setLoadingState(true);
-    await _authRepository.signInWithSmsCode(smsCode);
+    final userCredential = await _authRepository.signInWithSmsCode(smsCode);
     _smsCodeInputViewModel.setLoadingState(false);
   }
 
